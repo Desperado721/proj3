@@ -17,7 +17,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v2
       with:
         role-to-assume: arn:aws:iam::815645343418:user/jie
-        aws-region: us-east-2
+        aws-region: global
         
     - uses: iterative/setup-dvc@v1
       - name: Set up Python ${{ matrix.python-version }}
