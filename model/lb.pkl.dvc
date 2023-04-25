@@ -2,7 +2,3 @@ outs:
 - md5: 55959477a6e52946fe2c4ba37e47d764
   size: 358
   path: lb.pkl
-  cloud:
-    myremote:
-      etag: 55959477a6e52946fe2c4ba37e47d764
-      version_id: jV.KVW_wXS6hVzn9CuttkRlEW3Rc6MS1
