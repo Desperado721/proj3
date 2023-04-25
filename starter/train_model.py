@@ -2,7 +2,8 @@
 import sys
 import pickle
 import pandas as pd
-sys.path.append("/Users/jielyu/udacity/mle/proj3/")
+import os
+# sys.path.append("/Users/jielyu/udacity/mle/proj3/")
 
 from sklearn.model_selection import train_test_split
 from starter.ml.data import process_data
@@ -11,8 +12,12 @@ from starter.ml.model import model_train, inference, compute_model_metrics
 # Add the necessary imports for the starter code.
 
 # Add code to load in the data.
+FILE_DIR = os.path.dirname(os.path.abspath(__file__))
+PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
+data_path = os.path.join(PARENT_DIR, 'data') 
+
 census_data = pd.read_csv(
-    "/app/data/census.csv"
+    os.path.join(data_path, "census.csv")
 )
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
@@ -56,4 +61,4 @@ print(
     )
 )
 filename = "lr_model.pkl"
-pickle.dump(lr, open('/app/model/'+filename, "wb"))
+pickle.dump(lr, open(os.path.join(data_path, filename), "wb"))
