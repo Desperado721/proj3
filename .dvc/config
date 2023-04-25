@@ -2,3 +2,4 @@
     remote = myremote
 ['remote "myremote"']
     url = s3://jie-mle-proj3/
+    version_aware = true
