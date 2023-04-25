@@ -1,0 +1,4 @@
+[core]
+    remote = s3://jie-mle-proj3/model
+['remote "s3://jie-mle-proj3/model"']
+    url = ../model
