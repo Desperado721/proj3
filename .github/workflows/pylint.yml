@@ -1,4 +1,4 @@
-name: Pylint
+name: build Main
 
 on: [push]
 
@@ -10,6 +10,16 @@ jobs:
         python-version: ["3.8"]
     steps:
     - uses: actions/checkout@v3
+    - uses: iterative/setup-dvc@v1
+      with:
+        version: '1.0.1'
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::815645343418:user/jie
+        aws-region: us-east-2
+        
+  - uses: iterative/setup-dvc@v1
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
