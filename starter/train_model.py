@@ -16,9 +16,7 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
 data_path = os.path.join(PARENT_DIR, 'data') 
 
-census_data = pd.read_csv(
-    os.path.join(data_path, "census.csv")
-)
+census_data = pd.read_csv("census.csv")
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 train, test = train_test_split(census_data, test_size=0.20)
