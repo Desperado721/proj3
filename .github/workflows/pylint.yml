@@ -18,12 +18,11 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::815645343418:user/jie
         aws-region: global
-        
-    - uses: iterative/setup-dvc@v1
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
-        with:
-          python-version: ${{ matrix.python-version }}
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       working-directory: ./starter
       run: |
