@@ -1,4 +1,5 @@
 [core]
-    remote = s3://jie-mle-proj3/model
-['remote "s3://jie-mle-proj3/model"']
-    url = ../model
+    remote = myremote
+['remote "myremote"']
+    url = s3://jie-mle-proj3/
+    version_aware = true

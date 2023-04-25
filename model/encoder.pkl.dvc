@@ -2,3 +2,7 @@ outs:
 - md5: 80432260302d087ca25a80bc2d743b3a
   size: 1969
   path: encoder.pkl
+  cloud:
+    myremote:
+      etag: 80432260302d087ca25a80bc2d743b3a
+      version_id: psMvtFyFyCcfcbmcQYSS2sulW5v0G97z

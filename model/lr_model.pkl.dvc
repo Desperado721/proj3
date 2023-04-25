@@ -1,0 +1,8 @@
+outs:
+- md5: dcd8f2816bcba7ff72f6632fd5bbe816
+  size: 1575
+  path: lr_model.pkl
+  cloud:
+    myremote:
+      etag: dcd8f2816bcba7ff72f6632fd5bbe816
+      version_id: V9E6YfaZOV1SEIIx.hIt99oORrz6PzsA

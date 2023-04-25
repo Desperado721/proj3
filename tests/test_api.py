@@ -1,6 +1,6 @@
 import pytest
 import sys
-sys.path.append("/Users/jielyu/udacity/mle/nd0821-c3-starter-code/starter/")
+# sys.path.append("/Users/jielyu/udacity/mle/nd0821-c3-starter-code/starter/")
 import json
 from fastapi.testclient import TestClient
 

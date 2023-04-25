@@ -60,10 +60,10 @@ def process_data(
         X_categorical = encoder.fit_transform(X_categorical)
         y = lb.fit_transform(y.values).ravel()
         # save OneHotEncoder and LabelBinarizer for inference
-        with open("/Users/jielyu/udacity/mle/proj3/model/encoder.pkl", "wb") as f:
+        with open("model/encoder.pkl", "wb") as f:
             pickle.dump(encoder, f)
 
-        with open("/Users/jielyu/udacity/mle/proj3/model/lb.pkl", "wb") as f:
+        with open("model/lb.pkl", "wb") as f:
             pickle.dump(lb, f)
 
     else:

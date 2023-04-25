@@ -1,6 +1,6 @@
 import sys
 
-sys.path.append("/Users/jielyu/udacity/mle/nd0821-c3-starter-code/starter")
+# sys.path.append("/Users/jielyu/udacity/mle/nd0821-c3-starter-code/starter")
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
