@@ -13,6 +13,7 @@ jobs:
     - uses: iterative/setup-dvc@v1
       with:
         version: '1.0.1'
+      run: dvc pull
     # - name: Configure AWS Credentials
     #   uses: aws-actions/configure-aws-credentials@v2
     #   with:
