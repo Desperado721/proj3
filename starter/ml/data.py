@@ -60,10 +60,10 @@ def process_data(
         X_categorical = encoder.fit_transform(X_categorical)
         y = lb.fit_transform(y.values).ravel()
         # save OneHotEncoder and LabelBinarizer for inference
-        with open("model/encoder.pkl", "wb") as f:
+        with open("/app/model/encoder.pkl", "wb") as f:
             pickle.dump(encoder, f)
 
-        with open("model/lb.pkl", "wb") as f:
+        with open("/app/model/lb.pkl", "wb") as f:
             pickle.dump(lb, f)
 
     else:
@@ -87,8 +87,8 @@ def process_data_with_one_fixed_feature(
     else:
         y = np.array([])
 
-    encoder = pickle.load(open("../../model/encoder.pkl", "rb"))
-    lb = pickle.load(open("../../model/lb.pkl", "rb"))
+    encoder = pickle.load(open("/app/model/encoder.pkl", "rb"))
+    lb = pickle.load(open("/app/model/lb.pkl", "rb"))
     # make sure the last feature is the fixed feature
     categorical_features.remove(fixed_feature)
     categorical_features.append(fixed_feature)

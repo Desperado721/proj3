@@ -12,7 +12,7 @@ from starter.ml.model import model_train, inference, compute_model_metrics
 
 # Add code to load in the data.
 census_data = pd.read_csv(
-    "data/census.csv"
+    "/app/data/census.csv"
 )
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
@@ -56,4 +56,4 @@ print(
     )
 )
 filename = "lr_model.pkl"
-pickle.dump(lr, open('model/'+filename, "wb"))
+pickle.dump(lr, open('/app/model/'+filename, "wb"))
