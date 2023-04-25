@@ -13,13 +13,13 @@ jobs:
     - uses: iterative/setup-dvc@v1
       with:
         version: '1.0.1'
-      run: dvc pull
     # - name: Configure AWS Credentials
     #   uses: aws-actions/configure-aws-credentials@v2
     #   with:
     #     role-to-assume: arn:aws:iam::815645343418:user/jie
     #     aws-region: global
-
+    - name: pull data from s3
+      run: dvc pull
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
