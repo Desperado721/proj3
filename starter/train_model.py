@@ -12,7 +12,7 @@ from starter.ml.model import model_train, inference, compute_model_metrics
 
 # Add code to load in the data.
 census_data = pd.read_csv(
-    "./data/census.csv"
+    "data/census.csv"
 )
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
