@@ -11,6 +11,7 @@ from typing import List
 from starter.ml.data import process_data
 from starter.train_model import cat_features
 from starter.ml.model import compute_model_metrics
+import uvicorn
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
@@ -83,3 +84,6 @@ def welcome():
     return {
         "welcome": "Here is the API where you can get predictions for your salary next year"
     }
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)

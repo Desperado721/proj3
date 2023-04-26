@@ -65,5 +65,6 @@ print(
         precision, recall, fbeta
     )
 )
+data_path = os.path.join(PARENT_DIR, 'model')
 filename = "lr_model.pkl"
 pickle.dump(lr, open(os.path.join(data_path, filename), "wb"))
