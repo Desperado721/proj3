@@ -1,6 +1,7 @@
 [core]
     remote = myremote
     autostage = true
+    no_scm = true
 ['remote "myremote"']
     url = s3://jie-mle-proj3/
     version_aware = true
