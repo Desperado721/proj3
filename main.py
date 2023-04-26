@@ -60,7 +60,7 @@ class exmaple(BaseModel):
             }
         }
 
-@app.post("/predict/")
+@app.post("/predict")
 async def predict(test_sample: List[exmaple]):
     model = pickle.load(open("./model/lr_model.pkl", "rb"))
     encoder = pickle.load(open("./model/encoder.pkl", "rb"))
@@ -79,7 +79,7 @@ async def predict(test_sample: List[exmaple]):
     return {"precision": precision, "recall": recall, "fbeta": fbeta}
 
 
-@app.get("/info/")
+@app.get("/info")
 def welcome():
     return {
         "welcome": "Here is the API where you can get predictions for your salary next year"
