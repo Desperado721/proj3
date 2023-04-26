@@ -1,3 +1,5 @@
+import sys
+sys.path.append("/Users/jielyu/udacity/mle/proj3")
 import pytest
 import pandas as pd
 from starter.ml.model import compute_model_metrics,inference
@@ -9,13 +11,13 @@ import pickle
 
 
 @pytest.fixture
-def raw_data():
-    data = pd.read_csv("../../../data/census.csv")
+def data():
+    data = pd.read_csv("./data/census.csv")
     return data
 
 @pytest.fixture
 def lr():
-    lr = pickle.load("../../../model/lr_model.pkl")
+    lr = pickle.load(open("./model/lr_model.pkl", 'rb'))
     return lr
 
 
@@ -23,8 +25,8 @@ def test_process_data(data):
     X_train, y_train, encoder, lb = process_data(
         data, categorical_features=cat_features, label="salary", training=True
     )
-    assert type(X_train)==np.array
-    assert type(y_train) == np.array
+    assert isinstance(X_train, np.ndarray)
+    assert isinstance(y_train, np.ndarray)
     assert np.unique(y_train)[0] == 0
     assert np.unique(y_train)[1] ==1
     assert type(encoder) == OneHotEncoder
@@ -36,7 +38,7 @@ def test_inference(lr, data):
         data, categorical_features=cat_features, label="salary", training=True
     )
     preds = inference(lr, X_train)
-    assert type(preds) == np.array
+    assert type(preds) == np.ndarray
 
 
     

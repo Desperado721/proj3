@@ -37,7 +37,7 @@ def test_point():
     }]
 
 @pytest.fixture
-def test_points():   
+def test_points(test_point):   
     return [test_point[0]]*2
 
 def test_get_info():
