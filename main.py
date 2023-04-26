@@ -1,5 +1,7 @@
 # Put the code for your API here.
 import os
+import sys
+sys.path.append("/Users/jielyu/udacity/mle/proj3")
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from fastapi.encoders import jsonable_encoder
