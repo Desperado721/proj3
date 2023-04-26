@@ -1,5 +1,6 @@
 # Put the code for your API here.
 import sys
+sys.path.append("..")
 import os
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
@@ -8,16 +9,15 @@ import pickle
 import pandas as pd
 from typing import List
 from starter.ml.data import process_data
-from starter.train_model import cat_features
+from starter.constants import cat_features
 from starter.ml.model import compute_model_metrics
 
-# sys.path.append("..")
-# if "DYNO" in os.environ and os.path.isdir(".dvc"):
-#     os.system("dvc config core.no_scm true")
-#     if os.system("dvc pull") != 0:
-#         exit("dvc pull failed")
-#     os.system("rm -r .dvc .apt/usr/lib/dvc")
-
+sys.path.append("..")
+if "DYNO" in os.environ and os.path.isdir(".dvc"):
+    os.system("dvc config core.no_scm true")
+    if os.system("dvc pull") != 0:
+        exit("dvc pull failed")
+    os.system("rm -r .dvc .apt/usr/lib/dvc")
 app = FastAPI()
 
 

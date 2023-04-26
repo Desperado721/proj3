@@ -5,18 +5,8 @@ from starter.ml.data import process_data
 import pickle
 import numpy as np
 import os
-import pdb
+from starter.constants import cat_features
 
-cat_features = [
-    "workclass",
-    "education",
-    "marital-status",
-    "occupation",
-    "relationship",
-    "race",
-    "sex",
-    "native-country",
-]
 
 
 # Optional: implement hyperparameter tuning.

@@ -7,14 +7,15 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from starter.ml.data import process_data
 from starter.ml.model import model_train, inference, compute_model_metrics
+from starter.constants import cat_features
 
 
 # Add the necessary imports for the starter code.
-if "DYNO" in os.environ and os.path.isdir(".dvc"):
-    os.system("dvc config core.no_scm true")
-    if os.system("dvc pull") != 0:
-        exit("dvc pull failed")
-    os.system("rm -r .dvc .apt/usr/lib/dvc")
+# if "DYNO" in os.environ and os.path.isdir(".dvc"):
+#     os.system("dvc config core.no_scm true")
+#     if os.system("dvc pull") != 0:
+#         exit("dvc pull failed")
+#     os.system("rm -r .dvc .apt/usr/lib/dvc")
 # Add code to load in the data.
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
@@ -24,17 +25,6 @@ census_data = pd.read_csv(os.path.join(data_path, "census.csv"))
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 train, test = train_test_split(census_data, test_size=0.20)
-
-cat_features = [
-    "workclass",
-    "education",
-    "marital-status",
-    "occupation",
-    "relationship",
-    "race",
-    "sex",
-    "native-country",
-]
 
 
 X_train, y_train, encoder, lb = process_data(

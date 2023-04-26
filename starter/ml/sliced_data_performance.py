@@ -8,18 +8,7 @@ sys.path.append('./')
 import pandas as pd
 from starter.ml.model import  partial_inference
 import pickle
-
-
-cat_features = [
-    "workclass",
-    "education",
-    "marital-status",
-    "occupation",
-    "relationship",
-    "race",
-    "sex",
-    "native-country",
-]
+from starter.constants import cat_features
 
 def get_performance_on_partial_data():
 
