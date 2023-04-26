@@ -85,7 +85,3 @@ def welcome():
     return {
         "welcome": "Here is the API where you can get predictions for your salary next year"
     }
-
-
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
