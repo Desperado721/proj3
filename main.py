@@ -10,7 +10,6 @@ from typing import List
 from starter.ml.data import process_data
 from starter.train_model import cat_features
 from starter.ml.model import compute_model_metrics
-import uvicorn
 
 sys.path.append("..")
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
