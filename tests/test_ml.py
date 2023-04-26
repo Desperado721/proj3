@@ -1,5 +1,5 @@
 import sys
-
+sys.path.append("./")
 import pytest
 import pandas as pd
 from starter.ml.model import compute_model_metrics, inference
@@ -8,8 +8,6 @@ from starter.train_model import cat_features
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 import pickle
-
-sys.path.append("./")
 
 
 @pytest.fixture

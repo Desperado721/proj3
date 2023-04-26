@@ -1,10 +1,10 @@
 import sys
+sys.path.append("./")
 import pytest
 import json
 from fastapi.testclient import TestClient
 from main import app
 
-sys.path.append("./")
 client = TestClient(app)
 
 
