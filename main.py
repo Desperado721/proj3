@@ -18,9 +18,6 @@ if "DYNO" in os.environ and os.path.isdir(".dvc"):
 
 app = FastAPI()
 
-# @app.get("/")
-# async def say_hello():
-#     return {"greeting": "Hello World!"}
 
 
 class exmaple(BaseModel):

@@ -1,0 +1,53 @@
+name: build Master
+
+on: [push]
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8"]
+    steps:
+    - uses: actions/checkout@v3
+    - name : Set up python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+          python-version: ${{ matrix.python-version }}
+    - uses: iterative/setup-dvc@v1
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint flake8 pytest
+        pip install -r requirements.txt
+
+    # - name: Configure AWS Credentials
+    #   uses: aws-actions/configure-aws-credentials@v2
+    #   with:
+    #     role-to-assume: arn:aws:iam::815645343418:user/jie
+    #     aws-region: global
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-region: global
+        # role-to-assume: arn:aws:iam::815645343418:user/jie
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-session-token: ${{secrets.AWS_SESSION_TOKEN}}
+
+    - name: pull data from s3
+      run: |
+          dvc remote add -df s3-bucket s3://jie-mle-proj3/
+          dvc pull -f
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint flake8 pytest
+        pip install -r requirements.txt
+
+    - name: Analysing the code with pylint
+      run: |
+        pylint $(git ls-files '*.py') --fail-under=0
