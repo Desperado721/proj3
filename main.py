@@ -1,7 +1,7 @@
 # Put the code for your API here.
 import os
 import sys
-sys.path.append("/Users/jielyu/udacity/mle/proj3")
+sys.path.append("..")
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from fastapi.encoders import jsonable_encoder
@@ -61,7 +61,6 @@ class exmaple(BaseModel):
 
 @app.post("/predict/")
 async def predict(test_sample: List[exmaple]):
-    # if I should read from s3 bucket
     model = pickle.load(open("./model/lr_model.pkl", "rb"))
     encoder = pickle.load(open("./model/encoder.pkl", "rb"))
     lb = pickle.load(open("./model/lb.pkl", "rb"))

@@ -10,10 +10,10 @@ from sklearn.model_selection import train_test_split
 from starter.ml.data import process_data
 from starter.ml.model import model_train, inference, compute_model_metrics
 
-if os.path.isdir(".dvc"):
-    os.system("dvc config core.no_scm true")
-    if os.system("dvc pull -f") != 0:
-        exit("dvc pull failed")
+# if os.path.isdir(".dvc"):
+#     os.system("dvc config core.no_scm true")
+#     if os.system("dvc pull -f") != 0:
+#         exit("dvc pull failed")
     # os.system("rm -r .dvc .apt/usr/lib/dvc")
 
 # Add the necessary imports for the starter code.

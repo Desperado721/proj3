@@ -1,6 +1,6 @@
 import pytest
 import sys
-sys.path.append("/Users/jielyu/udacity/mle/proj3")
+sys.path.append("./")
 import json
 from fastapi.testclient import TestClient
 

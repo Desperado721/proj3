@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/Users/jielyu/udacity/mle/proj3")
+sys.path.append("./")
 import pytest
 import pandas as pd
 from starter.ml.model import compute_model_metrics,inference

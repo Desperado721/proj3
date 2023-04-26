@@ -4,7 +4,7 @@ import pickle
 
 
 def process_data(
-    X, categorical_features=[], label=None, training=True, encoder=None, lb=None
+    X, categorical_features=[], label=None, training=False, encoder=None, lb=None
 ):
     """Process the data used in the machine learning pipeline.
 
@@ -87,8 +87,8 @@ def process_data_with_one_fixed_feature(
     else:
         y = np.array([])
 
-    encoder = pickle.load(open("/app/model/encoder.pkl", "rb"))
-    lb = pickle.load(open("/app/model/lb.pkl", "rb"))
+    encoder = pickle.load(open("model/encoder.pkl", "rb"))
+    lb = pickle.load(open("model/lb.pkl", "rb"))
     # make sure the last feature is the fixed feature
     categorical_features.remove(fixed_feature)
     categorical_features.append(fixed_feature)
