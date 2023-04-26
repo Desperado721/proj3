@@ -1,27 +1,18 @@
 # Script to train machine learning model.
 import os
-import sys
 import pickle
 import pandas as pd
-import os
-# sys.path.append("/Users/jielyu/udacity/mle/proj3/")
-
 from sklearn.model_selection import train_test_split
 from starter.ml.data import process_data
 from starter.ml.model import model_train, inference, compute_model_metrics
 
-# if os.path.isdir(".dvc"):
-#     os.system("dvc config core.no_scm true")
-#     if os.system("dvc pull -f") != 0:
-#         exit("dvc pull failed")
-    # os.system("rm -r .dvc .apt/usr/lib/dvc")
 
 # Add the necessary imports for the starter code.
 
 # Add code to load in the data.
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
-data_path = os.path.join(PARENT_DIR, 'data') 
+data_path = os.path.join(PARENT_DIR, "data")
 
 census_data = pd.read_csv(os.path.join(data_path, "census.csv"))
 
@@ -65,6 +56,6 @@ print(
         precision, recall, fbeta
     )
 )
-data_path = os.path.join(PARENT_DIR, 'model')
+data_path = os.path.join(PARENT_DIR, "model")
 filename = "lr_model.pkl"
 pickle.dump(lr, open(os.path.join(data_path, filename), "wb"))

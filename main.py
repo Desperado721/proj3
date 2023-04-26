@@ -1,7 +1,6 @@
 # Put the code for your API here.
-import os
 import sys
-sys.path.append("..")
+import os
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from fastapi.encoders import jsonable_encoder
@@ -13,6 +12,7 @@ from starter.train_model import cat_features
 from starter.ml.model import compute_model_metrics
 import uvicorn
 
+sys.path.append("..")
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
     if os.system("dvc pull") != 0:
@@ -20,7 +20,6 @@ if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("rm -r .dvc .apt/usr/lib/dvc")
 
 app = FastAPI()
-
 
 
 class exmaple(BaseModel):
@@ -39,6 +38,7 @@ class exmaple(BaseModel):
     hours_per_week: int = Field(alias="hours-per-week")
     native_country: str = Field(alias="native-country")
     salary: str
+
     class Config:
         schema_extra = {
             "example": {
@@ -56,9 +56,10 @@ class exmaple(BaseModel):
                 "capital-loss": 0,
                 "hours-per-week": 40,
                 "native-country": "United-States",
-                "salary": "<=50K"
+                "salary": "<=50K",
             }
         }
+
 
 @app.post("/predict")
 async def predict(test_sample: List[exmaple]):
@@ -84,6 +85,7 @@ def welcome():
     return {
         "welcome": "Here is the API where you can get predictions for your salary next year"
     }
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)

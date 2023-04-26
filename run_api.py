@@ -1,12 +1,14 @@
 import requests
 import json
-response = requests.get('https://udacity-proj3.herokuapp.com/info/')
+
+response = requests.get("https://udacity-proj3.herokuapp.com/info/")
 # get
 print(response.status_code)
 print(response.json())
 
 # post
-test_data = [{
+test_data = [
+    {
         "age": 0,
         "workclass": "State-gov",
         "fnlgt": 77516,
@@ -21,10 +23,13 @@ test_data = [{
         "capital-loss": 0,
         "hours-per-week": 40,
         "native-country": "United-States",
-        "salary": "<=50K"
-    }]
+        "salary": "<=50K",
+    }
+]
 
 
-response = requests.post('https://udacity-proj3.herokuapp.com/predict/',data=json.dumps(test_data))
+response = requests.post(
+    "https://udacity-proj3.herokuapp.com/predict/", data=json.dumps(test_data)
+)
 print(response.status_code)
 print(response.json())

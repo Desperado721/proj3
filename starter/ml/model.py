@@ -1,13 +1,9 @@
-import sys
-
-# sys.path.append("/Users/jielyu/udacity/mle/nd0821-c3-starter-code/starter")
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
 from starter.ml.data import process_data_with_one_fixed_feature
 import pickle
 import numpy as np
-# from starter.train_model import cat_features
 
 
 cat_features = [
@@ -20,6 +16,8 @@ cat_features = [
     "sex",
     "native-country",
 ]
+
+
 # Optional: implement hyperparameter tuning.
 def model_train(X_train, y_train):
     """
@@ -83,10 +81,10 @@ def inference(model, X):
 
 def partial_inference(model, X: pd.DataFrame, fixed_feature: str):
     """
-    This function is used to  that computes performance on model slices. 
-    I.e. a function that computes the performance metrics when the value of a 
-    given feature is held fixed. E.g. for education, it would print out the 
-    model metrics for each slice of data that has a particular value for education. 
+    This function is used to  that computes performance on model slices.
+    I.e. a function that computes the performance metrics when the value of a
+    given feature is held fixed. E.g. for education, it would print out the
+    model metrics for each slice of data that has a particular value for education.
     You should have one set of outputs for every single unique value in education.
     """
     model = pickle.load(open("../model/lr_model.pkl", "rb"))
