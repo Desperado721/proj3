@@ -10,11 +10,11 @@ from starter.ml.model import model_train, inference, compute_model_metrics
 
 
 # Add the necessary imports for the starter code.
-# if "DYNO" in os.environ and os.path.isdir(".dvc"):
-#     os.system("dvc config core.no_scm true")
-#     if os.system("dvc pull") != 0:
-#         exit("dvc pull failed")
-#     # os.system("rm -r .dvc .apt/usr/lib/dvc")
+if "DYNO" in os.environ and os.path.isdir(".dvc"):
+    os.system("dvc config core.no_scm true")
+    if os.system("dvc pull") != 0:
+        exit("dvc pull failed")
+    os.system("rm -r .dvc .apt/usr/lib/dvc")
 # Add code to load in the data.
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
