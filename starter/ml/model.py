@@ -1,10 +1,11 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
-from starter.ml.data import process_data_with_one_fixed_feature
+from starter.ml.data import process_data
 import pickle
 import numpy as np
-
+import os
+import pdb
 
 cat_features = [
     "workclass",
@@ -79,7 +80,8 @@ def inference(model, X):
     return preds
 
 
-def partial_inference(model, X: pd.DataFrame, fixed_feature: str):
+
+def partial_inference(X: pd.DataFrame, fixed_feature: str, model, encoder, lb):
     """
     This function is used to  that computes performance on model slices.
     I.e. a function that computes the performance metrics when the value of a
@@ -87,21 +89,21 @@ def partial_inference(model, X: pd.DataFrame, fixed_feature: str):
     model metrics for each slice of data that has a particular value for education.
     You should have one set of outputs for every single unique value in education.
     """
-    model = pickle.load(open("../model/lr_model.pkl", "rb"))
-    X_test, y_test = process_data_with_one_fixed_feature(
-        X,
-        categorical_features=cat_features,
-        label="salary",
-        fixed_feature=fixed_feature,
-    )
-    unique_values = np.unique(X[:, -1])
-    precisions, recalls, fbeta_scores = [], [], []
-    for value in unique_values:
-        X_test = X_test[X_test[:, -1] == value]
-        y_pred = inference(model, X_test)
-        p, r, f = compute_model_metrics(y_test, y_pred)
-        precisions.append(p)
-        recalls.append(r)
-        fbeta_scores.append(f)
 
-    return precisions, recalls, fbeta_scores
+
+    # Get test set: Use the same random_state as the training
+
+    # Slice data and get performance metrics for each slice
+    print("calculating sliced data metrics:{}".format(fixed_feature))
+    for feature in cat_features:
+        for entry in X[feature].unique():
+            temp_df = X[X[feature] == entry]
+            X_test, y_test, _, _ = process_data(
+                temp_df, cat_features, label="salary", training=False,
+                encoder=encoder, lb=lb
+            )
+            y_pred = inference(model, X_test)
+            precision, recall, fbeta = compute_model_metrics(y_test, y_pred)
+            sliced_data_path = os.path.join(os.getcwd(), "sliced_data_performance/slice_output.txt")
+            with open(sliced_data_path, 'a') as file:
+                file.write(f"{feature} = {entry}; Precision: {precision}, Recall: {recall}, Fbeta: {fbeta}\n")
